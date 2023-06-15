@@ -16,3 +16,9 @@ Create a Plugin:
 ``php artisan make:plugin MY-PLUGIN``
 
 I will provide more information soon!
+
+## Requirements
+
+- **PHP 8.2**
+- **Laravel 10.13**
+- **Spatie Enum 3.0**
