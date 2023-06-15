@@ -2,6 +2,7 @@
   "name": "noxsi/laravel-plugin-manager",
   "license": "MIT",
   "minimum-stability": "dev",
+  "prefer-stable" : true,
   "authors": [
     {
       "name": "Dennis Schirra",
