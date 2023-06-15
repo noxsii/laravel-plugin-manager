@@ -1,3 +1,3 @@
 ## Laravel Plugin Manager
 
-``composer require noxis/laravel-plugin-manager``
+``composer require noxsi/laravel-plugin-manager``
