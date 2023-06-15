@@ -1,0 +1,46 @@
+{
+  "name": "noxsi/laravel-plugin-manager",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Dennis Schirra",
+      "email": "hello@noxsi.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Noxsi\\LaravelPluginManager\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Noxsi\\LaravelPluginManager\\Tests\\": "tests",
+      "PluginsTest\\": "tests/stubs/valid/"
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "ext-zip": "*",
+    "laravel/framework": "^10.13",
+    "spatie/laravel-enum": "^3.0"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Noxsi\\LaravelPluginManager\\Providers\\PluginServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^10.2",
+    "orchestra/testbench": "^8.5"
+  }
+}
