@@ -34,7 +34,7 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected string $consoleNamespace = 'Yxx\\LaravelPlugin\\Console\\Commands';
+    protected string $consoleNamespace = 'Noxsi\\LaravelPluginManager\\Console\\Commands';
 
     /**
      * The available commands.
