@@ -55,7 +55,7 @@ class FileActivator implements ActivatorInterface
      *
      * @var string
      */
-    private $statusesFile;
+    private mixed $statusesFile;
 
     public function __construct(Container $app)
     {
@@ -151,10 +151,11 @@ class FileActivator implements ActivatorInterface
 
     /**
      * Writes the activation statuses in a file, as json.
+     * @throws \JsonException
      */
     private function writeJson(): void
     {
-        $this->files->put($this->statusesFile, json_encode($this->pluginsStatuses, JSON_PRETTY_PRINT));
+        $this->files->put($this->statusesFile, json_encode($this->pluginsStatuses, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT));
     }
 
     /**
@@ -163,6 +164,7 @@ class FileActivator implements ActivatorInterface
      * @return array
      *
      * @throws FileNotFoundException
+     * @throws \JsonException
      */
     private function readJson(): array
     {
@@ -170,7 +172,7 @@ class FileActivator implements ActivatorInterface
             return [];
         }
 
-        return json_decode($this->files->get($this->statusesFile), true);
+        return json_decode($this->files->get($this->statusesFile), true, 512, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -179,7 +181,7 @@ class FileActivator implements ActivatorInterface
      *
      * @return array
      *
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException|\JsonException
      */
     private function getPluginsStatuses(): array
     {
@@ -199,7 +201,7 @@ class FileActivator implements ActivatorInterface
      * @param  $default
      * @return mixed
      */
-    private function config(string $key, $default = null)
+    private function config(string $key, $default = null): mixed
     {
         return $this->config->get('plugins.activators.file.'.$key, $default);
     }
